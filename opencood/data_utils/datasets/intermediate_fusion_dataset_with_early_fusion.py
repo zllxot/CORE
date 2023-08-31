@@ -24,7 +24,7 @@ from opencood.utils.pcd_utils import \
 from opencood.utils.transformation_utils import x1_to_x2
 
 
-class IntermediateFusionDatasetWithEarlyFusionEgo(basedataset.BaseDataset):
+class IntermediateFusionDatasetWithEarlyFusion(basedataset.BaseDataset):
     """
     This class is for intermediate fusion where each vehicle transmit the
     deep features to ego.
