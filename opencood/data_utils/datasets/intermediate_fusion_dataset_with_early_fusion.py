@@ -30,7 +30,7 @@ class IntermediateFusionDatasetWithEarlyFusion(basedataset.BaseDataset):
     deep features to ego.
     """
     def __init__(self, params, visualize, train=True):
-        super(IntermediateFusionDatasetWithEarlyFusionEgo, self). \
+        super(IntermediateFusionDatasetWithEarlyFusion, self). \
             __init__(params, visualize, train)
 
         # if project first, cav's lidar will first be projected to
