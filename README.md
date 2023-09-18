@@ -90,7 +90,7 @@ Arguments Explanation:
 - `show_sequence` : the detection results will visualized in a video stream. It can NOT be set with `show_vis` at the same time.
 
 ## Acknowledgment
-Gratitude to the creators and contributors of the following open-source cooperative perception projects, codebases, and datasets, which played a crucial role in shaping this project:
+Gratitude to the creators and contributors of the following open-source cooperative perception works, codebases, and datasets, which played a crucial role in shaping this project:
 - [OpenCOOD](https://github.com/DerrickXuNu/OpenCOOD)
 - [OPV2V](https://mobility-lab.seas.ucla.edu/opv2v/)
 - [CoPerception](https://github.com/coperception/coperception/tree/dd8fbb660300ee763e0bac870f63fc4987440a35)
