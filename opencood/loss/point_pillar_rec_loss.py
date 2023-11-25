@@ -145,7 +145,6 @@ class PointPillarRecLoss(nn.Module):
         # reconstruction
         if self.training:
             # rec_loss_list = self.rec_loss_func(x_ideal, x_rec)
-            # rec_loss = torch.stack(rec_loss_list).sum()
             rec_loss = F.mse_loss(x_rec, x_ideal)
 
             total_loss = reg_loss + conf_loss + rec_loss

@@ -1,18 +1,17 @@
-# this yaml is only for visualization
-name: visualization
+name: voxelnet_intermediate_core
 
 yaml_parser: "load_voxel_params"
-root_dir: "/data2/zhanglei/dataset/opv2v_data_dumping/train"
-validate_dir: "/data2/zhanglei/dataset/opv2v_data_dumping/test"
+root_dir: "opv2v_data_dumping/train"
+validate_dir: "opv2v_data_dumping/validate"
 
 train_params:
-  batch_size: &batch_size 4
-  epoches: 100
+  batch_size: &batch_size 2
+  epoches: 30
   eval_freq: 1
   save_freq: 1
 
 fusion:
-  core_method: 'EarlyFusionDataset' # LateFusionDataset, EarlyFusionDataset, IntermediateFusionDataset supported
+  core_method: 'IntermediateFusionDatasetWithEarlyFusion'
   args: []
 
 # preprocess-related
@@ -20,6 +19,7 @@ preprocess:
   # options: BasePreprocessor, VoxelPreprocessor, BevPreprocessor
   core_method: 'SpVoxelPreprocessor'
   args:
+    res: 0.4
     voxel_size: &voxel_size [0.4, 0.4, 0.4]
     max_points_per_voxel: &T 32
     max_voxel_train: 36000
@@ -50,7 +50,41 @@ postprocess:
   target_args:
     pos_threshold: 0.6
     neg_threshold: 0.45
-    score_threshold: 0.96
+    score_threshold: 0.25
   order: 'hwl' # hwl or lwh
   max_num: 100 # maximum number of objects in a single frame. use this number to make sure different frames has the same dimension in the same batch
   nms_thresh: 0.15
+
+# model related
+model:
+  core_method: voxel_net_intermediate_core
+  args:
+    N: *batch_size
+    T: *T
+    lidar_range: *cav_lidar
+    voxel_size: *voxel_size
+    anchor_num: *achor_num
+    compression: 3
+    pillar_vfe:
+      use_norm: true
+      with_distance: false
+      use_absolute_xyz: true
+      num_filters: [ 64 ]
+
+loss:
+  core_method: point_pillar_rec_loss
+  args:
+    cls_weight: 1.0
+    reg: 2.0
+
+optimizer:
+  core_method: Adam
+  lr: 0.002
+  args:
+    eps: 1e-10
+    weight_decay: 1e-4
+
+lr_scheduler:
+  core_method: multistep #step, multistep and Exponential support
+  gamma: 0.1
+  step_size: [15, 30]
