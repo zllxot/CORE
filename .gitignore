@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.pyd
+*.so
+*.pt
+*.pth
+build/
+dist/
+opencood/logs/
+opencood/utils/box_overlaps.c
+*.pdb
+*.lib
+*.exp

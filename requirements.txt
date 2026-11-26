@@ -1,0 +1,11 @@
+# Install PyTorch and torchvision for your CUDA runtime as described in the README.
+numpy==1.21.6
+PyYAML==6.0.1
+Cython==3.0.12
+opencv-python==4.5.1.48
+open3d==0.17.0
+shapely==2.0.0
+spconv-cu113==2.3.6
+cumm-cu113==0.4.11
+tensorboardX==2.6.2.2
+tqdm==4.66.5
