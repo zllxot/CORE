@@ -1,7 +1,5 @@
 # CORE: Cooperative Reconstruction for Multi-Agent Perception
 
-This repository is the official implementation of the ICCV 2023 paper "CORE: Cooperative Reconstruction for Multi-Agent Perception".
-
 ![](figures/framework.png)
 
 > [**CORE: Cooperative Reconstruction for Multi-Agent Perception**](https://arxiv.org/abs/2307.11514),            
